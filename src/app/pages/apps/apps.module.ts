@@ -63,7 +63,7 @@ import { ApikeyComponent } from './apikey/apikey.component';
 
 
 // Mask
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 // Swiper Slider
 import { SlickCarouselModule } from 'ngx-slick-carousel';

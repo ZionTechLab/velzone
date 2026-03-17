@@ -1,4 +1,4 @@
-import Step from 'shepherd.js/src/types/step';
+import { StepOptions } from 'shepherd.js';
 
 export const builtInButtons = {
   cancel: {
@@ -25,7 +25,7 @@ export const builtInButtons = {
   },
 };
 
-export const defaultStepOptions: Step.StepOptions = {
+export const defaultStepOptions: StepOptions = {
   classes: 'shepherd-theme-arrows custom-default-class',
   scrollTo: { behavior: 'smooth', block: 'center' },
   cancelIcon: {
@@ -34,7 +34,7 @@ export const defaultStepOptions: Step.StepOptions = {
   canClickTarget: false,
 };
 
-export const steps: Step.StepOptions[] = [
+export const steps: StepOptions[] = [
   {
     attachTo: {
       element: '.actions',

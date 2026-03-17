@@ -8,7 +8,7 @@ import { LayoutsModule } from "./layouts/layouts.module";
 import { PagesModule } from "./pages/pages.module";
 
 // Auth
-import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { initFirebaseBackend } from './authUtils';
@@ -17,7 +17,7 @@ import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 
 // Language
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateHttpLoader, TRANSLATE_HTTP_LOADER_CONFIG } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 // Store
 import { rootReducer } from './store';
@@ -37,10 +37,6 @@ import { ApplicationEffects } from './store/Jobs/jobs_effect';
 import { ApikeyEffects } from './store/APIKey/apikey_effect';
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 
-export function createTranslateLoader(http: HttpClient): any {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
-
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
@@ -54,8 +50,7 @@ if (environment.defaultauth === 'firebase') {
             defaultLanguage: 'en',
             loader: {
                 provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
+                useClass: TranslateHttpLoader
             }
         }),
         StoreModule.forRoot(rootReducer),
@@ -85,6 +80,7 @@ if (environment.defaultauth === 'firebase') {
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+        { provide: TRANSLATE_HTTP_LOADER_CONFIG, useValue: { prefix: 'assets/i18n/', suffix: '.json' } },
         provideHttpClient(withInterceptorsFromDi()),
     ] })
 export class AppModule { }
