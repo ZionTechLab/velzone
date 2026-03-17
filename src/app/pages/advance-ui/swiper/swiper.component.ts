@@ -122,8 +122,9 @@ export class SwipersComponent implements OnInit {
   };
 
   @HostListener('mousewheel', ['$event'])
-  onMouseWheel(event: WheelEvent) {
-    const delta = Math.sign(event.deltaY);
+  onMouseWheel(event: Event) {
+    const wheelEvent = event as WheelEvent;
+    const delta = Math.sign(wheelEvent.deltaY);
     if (delta > 0) {
       // Scroll down (next slide)
       this.slickCarousel.slickNext();

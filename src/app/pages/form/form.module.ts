@@ -9,9 +9,9 @@ import { UiSwitchModule } from 'ngx-ui-switch';
 // FlatPicker
 import { FlatpickrModule } from 'angularx-flatpickr';
 // Color Picker
-import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerDirective } from 'ngx-color-picker';
 // Mask
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 // Ngx Sliders
 import { NgxSliderModule } from 'ngx-slider-v2';
 //Wizard
@@ -76,7 +76,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgSelectModule,
     UiSwitchModule,
     FlatpickrModule,
-    ColorPickerModule,
+    ColorPickerDirective,
     NgxMaskDirective,
     NgxMaskPipe,
     NgxSliderModule,
