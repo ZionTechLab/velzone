@@ -44,3 +44,6 @@ __screenshots__/
 Thumbs.db
 portal/node_modules
 portal/dist
+node_modules
+portal/node_modules
+portal/dist
