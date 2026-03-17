@@ -42,5 +42,4 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
-portal/node_modules
-portal/dist
+node_modules\ndist
